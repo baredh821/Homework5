@@ -14,7 +14,7 @@ Work Day Calender - This project covers a calendar which is dynamic based on the
 
 # Screenshots
 
-<img src = "screenshot1.PNG">
+<img src = "../screenshot1.PNG">
 
 # Repo Details 
 https://github.com/baredh821/Homework5
