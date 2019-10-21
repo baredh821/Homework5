@@ -33,48 +33,48 @@
     </div> -->
     <table class="table">
       <tbody>
-        <tr>
-          <td class="time-block"><p id="task0_txt" class="timeBlock">9 AM</p></td>
+        <tr id="task0_row">
+          <td class="time-block"><p id="task0_txt" data-24hr="9" class="timeBlock">9 AM</p></td>
           <td><textarea id="task0_text" class="txt"></textarea></td>
           <td class="saveBtn"><button id="task0" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task1_txt" class="timeBlock">10 AM</p></td>
+        <tr id="task1_row">
+          <td class="time-block"><p id="task1_txt" data-24hr="10" class="timeBlock">10 AM</p></td>
           <td><textarea id="task1_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task1" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task2_txt" class="timeBlock">11 AM</p></td>
+        <tr id="task2_row">
+          <td class="time-block"><p id="task2_txt" data-24hr="11" class="timeBlock">11 AM</p></td>
           <td><textarea id="task2_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task2" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task3_txt" class="timeBlock">12 AM</p></td>
+        <tr id="task3_row">
+          <td class="time-block"><p id="task3_txt" data-24hr="12" class="timeBlock">12 AM</p></td>
           <td><textarea id="task3_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task3" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task4_txt" class="timeBlock">1 PM</p></td>
+        <tr id="task4_row">
+          <td class="time-block"><p id="task4_txt" data-24hr="13" class="timeBlock">1 PM</p></td>
           <td><textarea id="task4_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task4" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task5_txt" class="timeBlock">2 PM</p></td>
+        <tr id="task5_row">
+          <td class="time-block"><p id="task5_txt" data-24hr="14" class="timeBlock">2 PM</p></td>
           <td><textarea id="task5_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task5" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task6_txt" class="timeBlock">3 PM</p></td>
+        <tr id="task6_row">
+          <td class="time-block"><p id="task6_txt" data-24hr="15" class="timeBlock">3 PM</p></td>
           <td><textarea id="task6_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task6" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task7_txt" class="timeBlock">4 PM</p></td>
+        <tr id="task7_row">
+          <td class="time-block"><p id="task7_txt" data-24hr="16" class="timeBlock">4 PM</p></td>
           <td><textarea id="task7_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task7" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
-        <tr>
-          <td class="time-block"><p id="task8_txt" class="timeBlock">5 PM</p></td>
+        <tr id="task8_row">
+          <td class="time-block"><p id="task8_txt" data-24hr="17" class="timeBlock">5 PM</p></td>
           <td><textarea id="task8_text" class="txt"></textarea></input></td>
           <td class="saveBtn"><button id="task8" class="saveButton"><i class="fa fa-save"></i></button></td>
         </tr>
@@ -105,22 +105,28 @@
 
              
     var newDate = moment();
-    var hrDate = newDate.format('h A');
-    console.log(hrDate);
+    var hrDate = parseInt(newDate.format('kk'));
+    var i = 0;
 
-    $(".txt").each(function() {
-      var str = $(this).attr("id");
-      var str1 =  $("#" + str + "_txt").text();
-      console.log(str1);
-      if (str1 == hrDate){
-        $(".txt").css({"background-color":"red"});
+    $(".timeBlock").each(function() {
+      
+      var taskTime = parseInt($(this).data("24hr"));
+
+    
+      console.log(taskTime, hrDate);
+
+      if (taskTime < hrDate){
+        $("#task" + i + "_text").css({"background-color":"red"});
       } 
-      else if (str1 > hrDate){
-        $(".txt").css({"background-color":"gray"});
-        } else {
-          $(".txt").css({"background-color":"green"});  
-        }
-     });
+      else if (taskTime > hrDate){
+        $("#task" + i + "_text").css({"background-color":"gray"});
+      } else {
+        $("#task" + i + "_text").css({"background-color":"green"});  
+      }
+
+      i++;
+ 
+  });
     
   
   </script>
