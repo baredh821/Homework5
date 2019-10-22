@@ -106,6 +106,9 @@
              
     var newDate = moment();
     var hrDate = parseInt(newDate.format('kk'));
+    var currentDate = newDate.format('dddd, MMMM Do');
+    console.log(currentDate);
+    $('#currentDay').append(currentDate);
     var i = 0;
 
     $(".timeBlock").each(function() {
